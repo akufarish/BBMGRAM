@@ -77,7 +77,7 @@ function Dialogs() {
                         height={0}
                         className="w-full h-full"
                       />
-                      <form className="absolute bottom-0 bg-black bg-opacity-20 h-[140px] w-full">
+                      <form className="absolute bottom-0 bg-black bg-opacity-20 h-[175px] w-full">
                         <textarea
                           value={caption}
                           onChange={(e) => setCaption(e.target.value)}
