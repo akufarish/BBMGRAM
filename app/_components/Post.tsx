@@ -8,6 +8,8 @@ import { IoChatbubble } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Post } from "../_interfaces/post";
+import { createAvatar } from "@dicebear/core";
+import { loreleiNeutral } from "@dicebear/collection";
 
 interface PostsProps {
   data: Post;
@@ -27,12 +29,19 @@ function Posts({ data }: PostsProps) {
     }, 1200);
   };
 
+  const avatar = createAvatar(loreleiNeutral, {
+    seed: data?.expand?.user?.username,
+    // ... other options
+  });
+
+  const profilePicture = avatar.toDataUri();
+
   return (
     <section className="flex gap-5 flex-col w-[470px] h-[628px] border-b border-b-slate-800 my-3">
       <div className="flex items-center justify-between mx-2">
         <div className="flex items-center gap-4">
           <Image
-            src={`https://api.dicebear.com/8.x/initials/svg?seed=aa`}
+            src={profilePicture}
             className="w-[32px] h-[32px] rounded-full"
             alt=""
             width={0}
