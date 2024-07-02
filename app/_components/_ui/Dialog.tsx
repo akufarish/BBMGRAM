@@ -11,7 +11,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { FaRegPlusSquare } from "react-icons/fa";
-import { MdOutlinePhotoLibrary } from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlinePhotoLibrary,
+} from "react-icons/md";
 import Image from "next/image";
 import usePost from "@/app/_services/post";
 import { PostRequest } from "@/app/_interfaces/post";
@@ -20,7 +23,7 @@ import pb from "@/app/_services/pocketbase";
 function Dialogs() {
   const [preview, setPreview] = useState<string | null>(null);
   const [caption, setCaption] = useState<string>("");
-  const [image, setImage] = useState<File>();
+  const [image, setImage] = useState<File | undefined>();
 
   const { Store } = usePost();
 
@@ -47,6 +50,11 @@ function Dialogs() {
     await Store(payload);
   }
 
+  function clearAll() {
+    setPreview(null);
+    setImage(undefined);
+  }
+
   return (
     <>
       <Dialog>
@@ -57,6 +65,14 @@ function Dialogs() {
         <DialogContent className="bg-black border-none w-[712px] h-[512px]">
           <DialogHeader className="flex flex-col gap-5">
             <DialogTitle className="flex justify-between items-center">
+              {preview ? (
+                <MdOutlineKeyboardArrowLeft
+                  onClick={() => clearAll()}
+                  className="icon"
+                />
+              ) : (
+                <></>
+              )}
               <p className="text-white text-center">Create Post</p>
               {preview ? (
                 <button

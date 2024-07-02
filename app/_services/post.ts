@@ -12,12 +12,12 @@ export default function usePost() {
   }
 
   async function IndexPost() {
-    const res = await pb.collection("posts").getList(1, 30, {
+    const res = await pb.collection("posts").getFullList({
       expand: "user",
     });
-    console.log(res.items);
+    console.log(res);
 
-    return res.items as Post[];
+    return res as Post[];
   }
 
   return {

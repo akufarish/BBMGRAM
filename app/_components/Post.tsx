@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import img from "@/public/img/ado.jpg";
 import { BsThreeDots } from "react-icons/bs";
-import { FaBookmark, FaHeart, FaPaperPlane } from "react-icons/fa";
-import { IoChatbubble } from "react-icons/io5";
+import { FaHeart, FaBookmark } from "react-icons/fa";
+import { IoBookmarkOutline, IoPaperPlaneOutline } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Post } from "../_interfaces/post";
 import { createAvatar } from "@dicebear/core";
 import { loreleiNeutral } from "@dicebear/collection";
+import { IoHeartOutline, IoChatbubbleOutline } from "react-icons/io5";
 
 interface PostsProps {
   data: Post;
@@ -19,10 +19,13 @@ function Posts({ data }: PostsProps) {
   const url = "http://127.0.0.1:8090";
 
   const [numberClicked, setNumberClickd] = useState<number | null>(null);
+  const [liked, setLiked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
 
   const onClick = () => {
     setNumberClickd((angka: number | null) => angka! + 1);
     console.log(numberClicked);
+    setLiked(true);
 
     setTimeout(() => {
       setNumberClickd(null);
@@ -77,12 +80,30 @@ function Posts({ data }: PostsProps) {
       </div>
       <div className="flex justify-between items-center mx-2">
         <div className="flex items-center gap-3">
-          <FaHeart className="icon" />
-          <IoChatbubble className="icon" />
-          <FaPaperPlane className="icon" />
+          {liked ? (
+            <FaHeart
+              onClick={(prev) => setLiked(!prev)}
+              className="w-6 h-6 text-red-500"
+            />
+          ) : (
+            <IoHeartOutline className="icon" />
+          )}
+
+          <IoChatbubbleOutline className="icon" />
+          <IoPaperPlaneOutline className="icon" />
         </div>
         <div className="">
-          <FaBookmark className="icon" />
+          {bookmarked ? (
+            <FaBookmark
+              onClick={(prev) => setBookmarked(!prev)}
+              className="icon"
+            />
+          ) : (
+            <IoBookmarkOutline
+              onClick={() => setBookmarked(true)}
+              className="icon"
+            />
+          )}
         </div>
       </div>
       <div className="flex text-white gap-2">
