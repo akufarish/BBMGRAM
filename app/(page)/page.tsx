@@ -1,7 +1,12 @@
 import React from "react";
-import Post from "../_components/Post";
+import Posts from "../_components/Post";
+import usePost from "../_services/post";
 
-function HomePage() {
+async function HomePage() {
+  const { IndexPost } = usePost();
+
+  const posts = await IndexPost();
+
   return (
     <section className="flex flex-col ">
       {/* <div className="flex mt-5 gap-5 overflow-x-auto no-scrollbar  w-[478px] flex-nowrap min-w-0 flex-shrink-0">
@@ -10,8 +15,8 @@ function HomePage() {
         ))}
       </div> */}
       <div className="flex flex-col mt-5">
-        {[...Array(5)].map((data, index) => (
-          <Post key={index} />
+        {posts.map((data, index) => (
+          <Posts key={index} data={data} />
         ))}
       </div>
     </section>

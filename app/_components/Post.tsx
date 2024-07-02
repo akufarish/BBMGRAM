@@ -7,8 +7,15 @@ import { FaBookmark, FaHeart, FaPaperPlane } from "react-icons/fa";
 import { IoChatbubble } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { Post } from "../_interfaces/post";
 
-function Post() {
+interface PostsProps {
+  data: Post;
+}
+
+function Posts({ data }: PostsProps) {
+  const url = "http://127.0.0.1:8090";
+
   const [numberClicked, setNumberClickd] = useState<number | null>(null);
 
   const onClick = () => {
@@ -24,8 +31,14 @@ function Post() {
     <section className="flex gap-5 flex-col w-[470px] h-[628px] border-b border-b-slate-800 my-3">
       <div className="flex items-center justify-between mx-2">
         <div className="flex items-center gap-4">
-          <Image src={img} className="w-[32px] h-[32px] rounded-full" alt="" />
-          <p className="text-white font-bold">Ado</p>
+          <Image
+            src={`https://api.dicebear.com/8.x/initials/svg?seed=aa`}
+            className="w-[32px] h-[32px] rounded-full"
+            alt=""
+            width={0}
+            height={0}
+          />
+          <p className="text-white font-bold">{data?.expand?.user?.username}</p>
         </div>
         <div className="">
           <BsThreeDots className="icon" />
@@ -34,9 +47,11 @@ function Post() {
       <div className="w-[468px] h-[468px] relative">
         <Image
           onDoubleClick={onClick}
-          src={img}
+          src={`${url}/api/files/${data.collectionId}/${data.id}/${data.image}`}
           className="w-full h-full"
           alt=""
+          width={0}
+          height={0}
         />
         <AnimatePresence>
           {numberClicked && (
@@ -62,11 +77,11 @@ function Post() {
         </div>
       </div>
       <div className="flex text-white gap-2">
-        <p className="font-bold">Ado</p>
-        <p className="line-clamp-1">Lorem, ipsum dolor.</p>
+        <p className="font-bold">@{data?.expand?.user?.username}</p>
+        <p className="line-clamp-1">{data?.caption}</p>
       </div>
     </section>
   );
 }
 
-export default Post;
+export default Posts;

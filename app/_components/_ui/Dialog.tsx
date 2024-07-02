@@ -15,6 +15,7 @@ import { MdOutlinePhotoLibrary } from "react-icons/md";
 import Image from "next/image";
 import usePost from "@/app/_services/post";
 import { PostRequest } from "@/app/_interfaces/post";
+import pb from "@/app/_services/pocketbase";
 
 function Dialogs() {
   const [preview, setPreview] = useState<string | null>(null);
@@ -32,10 +33,13 @@ function Dialogs() {
     }
   }
 
+  const user = pb.authStore.model?.id;
+
   async function Simpan() {
     const payload: PostRequest = {
       caption: caption,
       image: image,
+      user: user,
     };
 
     console.log(payload);

@@ -4,3 +4,8 @@ interface RegisterPayload {
   password: string;
   passwordConfirm: string;
 }
+
+interface LoginPayload {
+  identity: string;
+  password: string;
+}

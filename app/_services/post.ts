@@ -1,4 +1,4 @@
-import { PostRequest } from "../_interfaces/post";
+import { Post, PostRequest } from "../_interfaces/post";
 import pb from "./pocketbase";
 
 export default function usePost() {
@@ -11,7 +11,17 @@ export default function usePost() {
     }
   }
 
+  async function IndexPost() {
+    const res = await pb.collection("posts").getList(1, 30, {
+      expand: "user",
+    });
+    console.log(res.items);
+
+    return res.items as Post[];
+  }
+
   return {
     Store,
+    IndexPost,
   };
 }

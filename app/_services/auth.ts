@@ -30,8 +30,20 @@ export default function useAuth() {
     }
   }
 
+  async function Login(payload: LoginPayload) {
+    try {
+      const authData = await pb
+        .collection("users")
+        .authWithPassword(payload.identity, payload.password);
+      navigate.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return {
     Register,
     OauthLogin,
+    Login,
   };
 }

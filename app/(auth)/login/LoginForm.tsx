@@ -1,5 +1,6 @@
 "use client";
 
+import useAuth from "@/app/_services/auth";
 import React, { useState } from "react";
 
 interface LoginPayload {
@@ -11,8 +12,21 @@ function LoginForm() {
   const [identity, setIdentity] = useState("");
   const [password, setPassword] = useState("");
 
+  const { Login } = useAuth();
+
+  async function doLogin(e: React.FormEvent) {
+    e.preventDefault();
+
+    const payload: LoginPayload = {
+      identity: identity,
+      password: password,
+    };
+
+    await Login(payload);
+  }
+
   return (
-    <form className="flex flex-col gap-2">
+    <form onSubmit={doLogin} className="flex flex-col gap-2">
       <input
         value={identity}
         onChange={(e) => setIdentity(e.target.value)}
