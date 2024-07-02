@@ -10,6 +10,7 @@ import { Post } from "../_interfaces/post";
 import { createAvatar } from "@dicebear/core";
 import { loreleiNeutral } from "@dicebear/collection";
 import { IoHeartOutline, IoChatbubbleOutline } from "react-icons/io5";
+import { CommentDialog } from "./_ui/CommentsDialog";
 
 interface PostsProps {
   data: Post;
@@ -86,10 +87,10 @@ function Posts({ data }: PostsProps) {
               className="w-6 h-6 text-red-500"
             />
           ) : (
-            <IoHeartOutline className="icon" />
+            <IoHeartOutline onClick={() => setLiked(true)} className="icon" />
           )}
 
-          <IoChatbubbleOutline className="icon" />
+          <CommentDialog />
           <IoPaperPlaneOutline className="icon" />
         </div>
         <div className="">

@@ -26,20 +26,9 @@ function SideBar() {
             label={"Search"}
           />
           <SideBarItem
+            link="/explore"
             icon={<FaCompass className="icon" />}
             label={"Explore"}
-          />
-          <SideBarItem
-            icon={<BiMoviePlay className="icon" />}
-            label={"Reels"}
-          />
-          <SideBarItem
-            icon={<IoChatbubbleEllipses className="icon" />}
-            label={"Messages"}
-          />
-          <SideBarItem
-            icon={<FaHeart className="icon" />}
-            label={"Notifications"}
           />
           <Dialogs />
         </div>
