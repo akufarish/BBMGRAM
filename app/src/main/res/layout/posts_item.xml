@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="22dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_marginStart="12dp"
+        app:shapeAppearanceOverlay="@style/rounded_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/profile"
+        android:id="@+id/profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:text="AkuParis"
+        app:layout_constraintStart_toEndOf="@+id/profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="12dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/profile"
+        android:scaleType="center"
+        app:layout_constraintTop_toBottomOf="@id/profile"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/postImage" />
+
+    <ImageView
+        android:id="@+id/likeBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_heart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/postImage"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_chat"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/postImage"
+        app:layout_constraintStart_toEndOf="@id/likeBtn"
+        android:id="@+id/chatBtn"
+        android:layout_marginStart="12dp" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/sendBtn"
+        android:src="@drawable/ic_send"
+        app:layout_constraintTop_toBottomOf="@id/postImage"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/chatBtn"
+        android:layout_marginStart="12dp" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_bookmark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/postImage"
+        android:layout_marginTop="12dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
