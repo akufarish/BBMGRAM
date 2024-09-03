@@ -74,7 +74,7 @@ function Posts({ data }: PostsProps) {
               transition={{ ease: "easeOut", duration: 0.8 }}
               exit={{ opacity: 0 }}
             >
-              <FaHeart className="w-32 h-32 text-red-500 bottom-[24px] left-[170px] absolute" />
+              <FaHeart className="w-32 h-32 text-red-600 bottom-[24px] left-[170px] absolute" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -84,7 +84,7 @@ function Posts({ data }: PostsProps) {
           {liked ? (
             <FaHeart
               onClick={(prev) => setLiked(!prev)}
-              className="w-6 h-6 text-red-500"
+              className="w-6 h-6 text-red-600"
             />
           ) : (
             <IoHeartOutline onClick={() => setLiked(true)} className="icon" />

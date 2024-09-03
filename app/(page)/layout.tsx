@@ -16,18 +16,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black">
-        <div className="min-h-full">
+        {/* <div className="min-h-full">
           <div className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0">
             <SideBar />
           </div>
           <div className="lg:pl-[29rem]  h-full flex flex-col flex-1">
             <main className="flex flex-col">
-              <div className="px-2 sm:px-8 pt-4 py-32 h-screen ">
+              <div className="px-2 sm:px-8 pt-4 py-32 h-screen "> */}
                 {children}
-              </div>
+              {/* </div>
             </main>
           </div>
-        </div>
+        </div> */}
       </body>
     </html>
   );
